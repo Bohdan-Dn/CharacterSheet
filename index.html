@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/css/iconfont.css">
+    <link rel="stylesheet" href="style/css/style.css">
+    <title>CharacterSheet</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo">
+                <img src="/images/logo.png" alt="logo">
+            </div>
+            <div class="header__body">
+                <form class="header__form-text form-text">
+                    <div class="form-text__block">
+                        <input class="form-text__input" type="text" name="name" autocomplete="off" required>
+                        <label class="form-text__placeholder">Ім'я</label>
+                    </div>
+                    <div class="form-text__block">
+                        <input class="form-text__input" type="text" name="race" autocomplete="off" required>
+                        <label class="form-text__placeholder">Раса</label>
+                    </div>
+                    <div class="form-text__block">
+                        <input class="form-text__input" type="text" name="class" autocomplete="off" required>
+                        <label class="form-text__placeholder">Клас</label>
+                    </div>
+                    <div class="form-text__block">
+                        <input class="form-text__input" type="text" name="outlock" autocomplete="off" required>
+                        <label class="form-text__placeholder">Світогляд</label>
+                    </div>
+                </form>
+                <form class="header__form-number form-number" onsubmit="return false">
+                    <div class="form-number__block">
+                        <label class="form-number__placeholder">Рівень</label>
+                        <button class="form-number__decrement" id="decrement" onclick="stepper(this)">-</button>
+                        <input class="form-number__input" name="lvl" min="1" max="20" type="number" value="1" required>
+                        <button class="form-number__increment" id="increment" onclick="stepper(this)">+</button>
+                    </div>
+                </form>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="main__container">
+                <div class="main__content">
+                    <div class="main__left-side left-side">
+                        <div class="left-side__stats">
+
+                            <form class="left-side__form-number form-number" onsubmit="return false">
+
+                                <div class="form-number__block">
+                                    <label class="form-number__placeholder form-number__placeholder-stat">Сила</label>
+                                    <button class="form-number__decrement " id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input " name="power" min="0" max="20" type="number"
+                                        value="0" autocomplete="off" required>
+                                    <span class="form-number__mod">0</span>
+                                    <button class="form-number__increment " id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+
+                                <div class="form-number__block">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-stat">Вправність</label>
+                                    <button class="form-number__decrement " id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input " name="agility" min="0" max="20" type="number"
+                                        value="0" autocomplete="off" required>
+                                    <span class="form-number__mod">0</span>
+                                    <button class="form-number__increment " id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+
+                                <div class="form-number__block">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-stat">Статура</label>
+                                    <button class="form-number__decrement " id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input " name="build" min="0" max="20" type="number"
+                                        value="0" autocomplete="off" required>
+                                    <span class="form-number__mod">0</span>
+                                    <button class="form-number__increment" id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+
+                                <div class="form-number__block">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-stat">Інтелект</label>
+                                    <button class="form-number__decrement " id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input " name="intellect" min="0" max="20" type="number"
+                                        value="0" autocomplete="off" required>
+                                    <span class="form-number__mod">0</span>
+                                    <button class="form-number__increment " id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+
+                                <div class="form-number__block">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-stat">Мудрість</label>
+                                    <button class="form-number__decrement " id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input " name="wisdom" min="0" max="20" type="number"
+                                        value="0" autocomplete="off" required>
+                                    <span class="form-number__mod">0</span>
+                                    <button class="form-number__increment " id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+
+                                <div class="form-number__block">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-stat">Харизма</label>
+                                    <button class="form-number__decrement " id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input " name="charisma" min="0" max="20" type="number"
+                                        value="0" autocomplete="off" required>
+                                    <span class="form-number__mod">0</span>
+                                    <button class="form-number__increment " id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div class="left-side__throws throws">
+                            <form class="throws__form-number form-number" onsubmit="return false">
+                                <div class="form-number__block form-number__block-throws">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-throws">Натхнення</label>
+                                    <button class="form-number__decrement form-number__decrement-throws" id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input form-number__input-throws" name="inspiration"
+                                        min="0" max="1" type="number" value="0" required>
+
+                                    <button class="form-number__increment form-number__increment-throws" id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+                                <div class="form-number__block form-number__block-throws">
+                                    <label
+                                        class="form-number__placeholder form-number__placeholder-throws">Майстерність</label>
+                                    <button class="form-number__decrement form-number__decrement-throws" id="decrement"
+                                        onclick="stepper(this)">-</button>
+                                    <input class="form-number__input form-number__input-throws" name="skillBonus"
+                                        min="0" max="20" type="number" value="0" required>
+
+                                    <button class="form-number__increment form-number__increment-throws" id="increment"
+                                        onclick="stepper(this)">+</button>
+                                </div>
+                            </form>
+
+                            <div class="throws__save throws-save">
+                                <h5 class="throws-save__title">Кидки рятунку</h5>
+                                <form class="throws-save__form form-number" onsubmit="return false">
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="throwPower" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Сила</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="throwAgility" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Вправність</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="throwBuild" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Статура</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="throwIntellect" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Інтелект</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="throwWisdom" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Мудрість</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="throwCharisma" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Харизма</label>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="throws__save throws-save">
+                                <h5 class="throws-save__title">Навички</h5>
+                                <form class="throws-save__form form-number" onsubmit="return false">
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="acrobatics" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Акробатика (Впр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="behaviour" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Аналіз поведінки (Мдр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="artistry" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Артистичність (Хар)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="athleticism" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Атлетика (Сил)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="survival" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Виживання (Мдр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="animal" min="-10" max="20" type="number"
+                                            value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Догляд тварин (Мдр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="intimidation" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Залякування (Хар)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="history" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Історія (Інт)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="modicine" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Медицина (Мдр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="mysticism" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Містицизм (Інт)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="deception" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Обман (Хар)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="examination" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Обстеження (Інт)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="persuasiveness" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Переконливість (Хар)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="nature" min="-10" max="20" type="number"
+                                            value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Природа (Інт)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="religion" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Релігія (Інт)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="secrecy" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Скритність (Впр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="sleight" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Спритність рук (Впр)</label>
+                                    </div>
+                                    <div class="throws-save__block">
+                                        <input class="throws-save__input" name="ettentiveness" min="-10" max="20"
+                                            type="number" value="1" required>
+                                        <button class="throws-save__button-decrement" id="decrement"
+                                            onclick="stepper(this)">-</button>
+                                        <button class="throws-save__button-increment" id="increment"
+                                            onclick="stepper(this)">+</button>
+                                        <label class="throws-save__label">Уважність (Мдр)</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main__middle">
+                        Middle
+                    </div>
+
+                    <div class="main__right-side right-side">
+                        <div class="right-side__block">
+                            <div class="right-side__spells spells">
+                                <div class="spells__body">
+                                    <div class="spells__header">
+                                        <h5 class="spells__title">Заговори</h5>
+                                        <div class="spells__settings">
+                                            <div class="spells__check">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                            </div>
+                                            <div class="spells__button">
+                                                <button class="spells__button-add" id="zeroLvlSpells">Add</button>
+                                                <ul class="spells__list-add">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="spells__list">
+                                        <li class="spells__item">
+                                            <span class="spells__name">Acid Splash</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Chill Touch</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Dancing Lights</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Druidcraft</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Eldritch Blast</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Fire Bolt</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Guidance</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Light</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="spells__body">
+                                    <div class="spells__header">
+                                        <h5 class="spells__title">Заклинання першого рівня</h5>
+                                        <div class="spells__settings">
+                                            <div class="spells__check">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                            </div>
+                                            <div class="spells__button">
+                                                <button class="spells__button-add" id="firstLvlSpells">Add</button>
+                                                <ul class="spells__list-add">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="spells__list">
+                                        <li class="spells__item">
+                                            <span class="spells__name">Alarm</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Animal Friendship</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Bane</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Bless</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Burning Hands</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Charm Person</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Color Spray</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Command</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="spells__body">
+                                    <div class="spells__header">
+                                        <h5 class="spells__title">Заклинання другого рівня</h5>
+                                        <div class="spells__settings">
+                                            <div class="spells__check">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                            </div>
+                                            <div class="spells__button">
+                                                <button class="spells__button-add" id="firstLvlSpells">Add</button>
+                                                <ul class="spells__list-add">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="spells__list">
+                                        <li class="spells__item">
+                                            <span class="spells__name">Alarm</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Animal Friendship</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Bane</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Bless</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Burning Hands</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Charm Person</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Color Spray</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Command</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="spells__body">
+                                    <div class="spells__header">
+                                        <h5 class="spells__title">Заклинання третього рівня</h5>
+                                        <div class="spells__settings">
+                                            <div class="spells__check">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                                <input class="spells__input-check" type="checkbox">
+                                            </div>
+                                            <div class="spells__button">
+                                                <button class="spells__button-add" id="firstLvlSpells">Add</button>
+                                                <ul class="spells__list-add">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="spells__list">
+                                        <li class="spells__item">
+                                            <span class="spells__name">Alarm</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Animal Friendship</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Bane</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Bless</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Burning Hands</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Charm Person</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Color Spray</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                        <li class="spells__item">
+                                            <span class="spells__name">Command</span>
+                                            <button class="spells__button-remove">Remove</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

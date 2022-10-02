@@ -1,0 +1,219 @@
+// FormText
+.form-text {
+
+    &__block {
+        position: relative;
+        font-size: rem(16);
+        padding-top: rem(20);
+        margin-bottom: rem(5);
+    }
+
+    &__placeholder {
+        position: absolute;
+        left: rem(10);
+        top: calc(50% + rem(10));
+        transform: translateY(-50%);
+        color: $supTextColor;
+        transition:
+            top .3s ease,
+            font-size .3s ease,
+            color .3s ease;
+    }
+
+    &__input {
+        position: relative;
+        z-index: 10;
+        border: none;
+        appearance: none;
+        border-top-left-radius: rem(3);
+        border-top-right-radius: rem(3);
+        width: 100%;
+        outline: none;
+        font-size: rem(24);
+        font-weight: 700;
+        padding-top: rem(8);
+        padding-bottom: rem(4);
+        padding-left: rem(8);
+        padding-right: rem(4);
+        background:
+            linear-gradient(90deg, $logoColor, $logoColor) center bottom/0 0.15em no-repeat,
+            linear-gradient(90deg, $supTextColor, $supTextColor) left bottom/100% 0.15em no-repeat,
+            linear-gradient(90deg, transparent, transparent) left bottom/100% no-repeat;
+        transition: background-size 0.3s ease;
+    }
+
+    &__input:valid+.form-text__placeholder,
+    &__input:focus+.form-text__placeholder {
+        font-style: italic;
+        top: rem(15);
+        font-size: rem(12);
+        color: $supTextColor;
+    }
+
+    &__input:valid,
+    &__input:focus {
+        background-size: 100% 2px, 100% 2px, 100%;
+    }
+}
+
+// FormNumber
+.form-number {
+    margin-top: rem(50);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: rem(50);
+
+    &__block {
+        position: relative;
+        display: flex;
+        border-radius: rem(45);
+        border: 1px solid #424242;
+    }
+
+    &__placeholder {
+        padding: rem(2) rem(7);
+        border: 1px solid $logoColor;
+        border-radius: rem(45);
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $blockBgColor;
+        color: $textColor;
+    }
+
+    &__placeholder-throws {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: rem(7) rem(20);
+        border-radius: rem(10);
+        border: 2px solid rgb(86, 156, 86);
+        top: -60%;
+        left: 50%;
+        font-size: rem(24);
+    }
+
+    &__input {
+        max-width: 50px;
+        text-align: center;
+        font-size: rem(32);
+        border: none;
+        background-color: $blockBgColor;
+        color: $textColor;
+    }
+
+    &__lvl {
+        display: none;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &__decrement,
+    &__increment {
+        color: $textColor;
+        background-color: $blockBgColor;
+        font-size: rem(32);
+        cursor: pointer;
+        transition: background-color linear 0.3s;
+    }
+
+    &__decrement:hover,
+    &__increment:hover {
+        background-color: darken($color: $blockBgColor, $amount: 10);
+    }
+
+    &__decrement {
+        padding: rem(15) rem(5) rem(15) rem(25);
+        border-radius: rem(45) 0 0 rem(45);
+    }
+
+    &__decrement-throws {
+        padding: rem(5) rem(15) rem(10) rem(20);
+        border-radius: rem(5) 0 0 rem(45);
+    }
+
+    &__increment {
+        padding: rem(15) rem(17) rem(15) rem(5);
+        border-radius: 0 rem(45) rem(45) 0;
+    }
+
+    &__increment-throws {
+        padding: rem(10) rem(15) rem(10) rem(15);
+        border-radius: 0 rem(5) rem(45) 0;
+    }
+
+    &__mod {
+        padding: rem(3) rem(7);
+        min-width: rem(40);
+        text-align: center;
+        position: absolute;
+        left: 33%;
+        bottom: -15%;
+        font-size: rem(20);
+        background-color: $blockBgColor;
+        border-radius: rem(45);
+        border: 1px solid $logoColor;
+    }
+}
+
+.throws-save {
+
+    &__form {
+        margin-top: rem(20);
+        width: 100%;
+        align-items: flex-start;
+        gap: rem(10);
+    }
+
+    &__block {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        border-bottom: 1px solid $textColor;
+    }
+
+    &__block:hover .throws-save__button-decrement,
+    &__block:hover .throws-save__button-increment {
+        visibility: visible;
+        display: block;
+    }
+
+    &__block:hover .throws-save__label {
+        margin-left: rem(5);
+    }
+
+    &__input {
+        background-color: transparent;
+        text-align: center;
+        font-size: rem(18);
+    }
+
+    &__button-decrement,
+    &__button-increment {
+        visibility: hidden;
+        display: none;
+        min-width: rem(11);
+        //border: 1px solid $textColor;
+    }
+
+    &__button-decrement {
+        border-right: none;
+        margin-right: rem(5);
+    }
+
+    &__button-increment {
+        border-left: none;
+    }
+
+    &__label {
+        margin-left: rem(15);
+        //text-decoration: underline;
+    }
+}
