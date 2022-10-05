@@ -3,11 +3,12 @@ const DOM = {
     formText: document.querySelectorAll('.form-text'),
     spellsAdd: document.querySelectorAll('.spells__button-add'),
     spellListAdd: document.querySelectorAll('.spells__list-add'),
+    cellsBtn: document.querySelectorAll('.spells__button-cell'),
 };
 
 const LS = localStorage;
-let formDataText = {};
 let formDataNumber = {};
+let formDataText = {};
 
 
 
@@ -77,51 +78,67 @@ for (let i = 0; i < DOM.formNumber.length; i++) {
     };
 };
 
+// Checkbox
+const checkBtn = `<label class="spells__check">
+<input class="spells__checkbox" type="checkbox">
+<span class="spells__checkbox-fake"></span>
+</label>`;
 
-// Spells API(D&D)
-const spellsURL = 'https://www.dnd5eapi.co/api/spells';
-
-function getLvlSpells(spells, lvl) {
-    for (s of spells) {
-        if (s.level == lvl) {
-            DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
-        } else if (s.level == lvl) {
-            DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
-        } else if (s.level == lvl) {
-            DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
-        } else if (s.level == lvl) {
-            DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
-        } else if (s.level == lvl) {
-            DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
-        } else if (s.level == lvl) {
-            DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
-        }
-    }
+for (let i = 0; i < DOM.cellsBtn.length; i++) {
+    DOM.cellsBtn[i].addEventListener('click', function () {
+        const cellsBox = this.parentNode.parentNode.lastElementChild;
+        if (this.innerText == '+' && cellsBox.innerHTML.length < 1000) {
+            this.parentElement.parentElement.lastElementChild.insertAdjacentHTML('afterbegin', checkBtn);
+            DOM.cellsBtn[i].parentElement.lastElementChild.style.display = "block";
+        } else if (this.innerText == '-' && cellsBox.lastElementChild) {
+            cellsBox.removeChild(cellsBox.lastElementChild);
+        };
+        if (DOM.cellsBtn[i].parentElement.parentElement.lastElementChild.firstElementChild == null) {
+            DOM.cellsBtn[i].parentElement.lastElementChild.style.display = "none";
+        };
+    });
+    if (DOM.cellsBtn[i].parentElement.parentElement.lastElementChild.firstElementChild == null) {
+        DOM.cellsBtn[i].parentElement.lastElementChild.style.display = "none";
+    };
 };
 
-async function getSpellsRequest(lvl) {
-    const spellsArrURL = [];
-    const response = await fetch(spellsURL);
-    const data = await response.json();
-    const spellsArr = data.results.map(el => el.index);
-    spellsArr.forEach(element => {
-        spellsArrURL.push(element);
-    });
-    const requests = spellsArrURL.map(spell => fetch(`https://www.dnd5eapi.co/api/spells/${spell}`));
-    Promise.all(requests)
-        .then(responses => Promise.all(responses.map(r => r.json())))
-        .then(spells => getLvlSpells(spells, lvl));
-    //.then(spells => spells.forEach(spell => spell.level == 0 ? console.log(spell.name) : console.log(spell.level)));
-};
+//Spells API(D&D)
+// const spellsURL = 'https://www.dnd5eapi.co/api/spells';
 
-for (let lvl = 0; lvl < DOM.spellsAdd.length; lvl++) {
-    DOM.spellsAdd[lvl].addEventListener('click', function (e) {
-        this.nextElementSibling.classList.toggle('_active');
-        if (this.innerText == 'Add') {
-            this.innerText = 'Close';
-        } else {
-            this.innerText = 'Add';
-        }
-    });
-    getSpellsRequest(lvl);
-}
+// function getLvlSpells(spells, lvl) {
+//     for (s of spells) {
+//         if (s.level == lvl) {
+//             DOM.spellListAdd[lvl].insertAdjacentHTML('beforeend', `<li class="spells__item-add">${s.name}</li>`);
+//         };
+//     }
+// };
+
+// async function getSpellsRequest(lvl) {
+//     const spellsArrURL = [];
+//     const response = await fetch(spellsURL);
+//     const data = await response.json();
+//     const spellsArr = data.results.map(el => el.index);
+//     spellsArr.forEach(element => {
+//         spellsArrURL.push(element);
+//     });
+//     const requests = spellsArrURL.map(spell => fetch(`https://www.dnd5eapi.co/api/spells/${spell}`));
+//     Promise.all(requests)
+//         .then(responses => Promise.all(responses.map(r => r.json())))
+//         .then(spells => getLvlSpells(spells, lvl))
+// };
+
+// for (let lvl = 0; lvl < DOM.spellsAdd.length; lvl++) {
+//     DOM.spellsAdd[lvl].addEventListener('click', function () {
+//         this.nextElementSibling.classList.toggle('_active');
+//         if (this.innerText == 'Add') {
+//             this.innerText = 'Close';
+//         } else {
+//             this.innerText = 'Add';
+//         }
+//     });
+//     getSpellsRequest(lvl);
+// };
+
+
+
+

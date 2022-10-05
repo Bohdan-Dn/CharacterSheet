@@ -256,6 +256,7 @@ h6 {
 }
 .spells__body {
   overflow: hidden;
+  min-height: 18.75rem;
   padding-top: 0.625rem;
   padding-right: 0.9375rem;
   padding-bottom: 1.25rem;
@@ -277,10 +278,36 @@ h6 {
 }
 .spells__settings {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
-.spells__input-check {
+.spells__cells {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+}
+.spells__checkbox-body {
+  display: flex;
+  gap: 0.625rem;
+}
+.spells__checkbox {
+  display: none;
+}
+.spells__checkbox-fake {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #ebe1e1;
+  border: 1px solid #747171;
   border-radius: 50%;
+}
+.spells__checkbox:checked + .spells__checkbox-fake {
+  background-color: #ff0000;
+}
+.spells__button {
+  display: flex;
+  justify-content: end;
 }
 .spells__button-add {
   padding: 0.125rem 0.5rem;
@@ -324,7 +351,7 @@ h6 {
   overflow: auto;
   background-color: #ebe1e1;
   right: -100%;
-  top: -100%;
+  top: -50%;
   z-index: 1;
   transform: translateY(55%);
   transition: all linear 0.3s;

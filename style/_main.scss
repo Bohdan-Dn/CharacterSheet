@@ -88,6 +88,7 @@
 
     &__body {
         overflow: hidden;
+        min-height: rem(300);
         padding-top: rem(10);
         padding-right: rem(15);
         padding-bottom: rem(20);
@@ -112,11 +113,42 @@
 
     &__settings {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
     }
 
-    &__input-check {
+    &__cells {
+        display: flex;
+        gap: rem(10);
+        align-items: center;
+    }
+
+    &__checkbox-body {
+        display: flex;
+        gap: rem(10);
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__checkbox-fake {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        width: rem(20);
+        height: rem(20);
+        background-color: #ebe1e1;
+        border: 1px solid #747171;
         border-radius: 50%;
+    }
+
+    &__checkbox:checked+.spells__checkbox-fake {
+        background-color: $logoColor;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: end;
     }
 
     &__button-add {
@@ -167,7 +199,7 @@
         overflow: auto;
         background-color: $mainBgColor;
         right: -100%;
-        top: -100%;
+        top: -50%;
         z-index: 1;
         transform: translateY(55%);
         transition: all linear 0.3s;
